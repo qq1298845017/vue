@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<li v-for="n in names">
+				{{n.name}}的年龄是{{n.age}}
+			</li>
+		</div>
+		<script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+		<script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data:{
+					names:""
+				},
+				created:function(){
+					this.$http.get('json/data.json').then(function(res){
+               	    this.names =res.body
+         			  },function(){
+               		   console.log('请求失败处理');
+					});
+					}
+			})
+		</script>
+	</body>
+</html>

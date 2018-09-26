@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			li{
+				list-style: none;
+				width: 120px;
+				height: 30px;
+				border: 1px solid darkgray;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-on:keyup.enter="add" v-model="message"/>
+			<button v-on:click="add">添加</button>
+			<li v-for="name in names">
+				{{name.n}}
+				<button v-on:click="remove">删除</button>
+			</li>
+		</div>
+		<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data:{
+					names:[
+						{n:"sss"},
+						{n:"www"},
+						{n:"aaa"},
+					],
+					message:"",
+				},
+				methods:{
+					add:function(){
+						var text =this.message.trim();
+						if(text){
+							this.names.push({n:text})
+							this.message=""
+						}
+						if(text==""){
+							alert("sadasd")
+						}
+					},
+					remove:function(index){
+						this.names.splice(index,1)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<input v-model="message" @keyup.enter="add"/>
+			<button @click="add">添加</button>
+			<li v-for="(name,index) in names">
+				{{name}}
+				<button v-on:click="splice(index)">删除</button>
+			</li>
+			
+			
+		</div>
+		<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data:{
+					message:"",
+					names:[
+						"大时代","的撒打算","挨打的"
+					]
+				},
+				methods:{
+					add:function(){
+						var text =this.message.trim()
+						if(text){
+						this.names.push(this.message)
+						this.message=""
+						}
+					},
+					splice:function(e){
+						this.names.splice(e,1)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

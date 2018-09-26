@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>图书馆增加书</title>
+  <style>
+    ul{
+      list-style: none;
+      width:100px;
+      height:auto;
+    }
+    
+    .buttonstylelist{
+      width:80px;
+      height:30px;
+      border:1px solid blue;
+      color:#fff;
+      background: blue;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <input v-on:keyup.enter="addTodo" v-model="message"/>
+  <button v-on:click = "add" v-bind:class="buttonStyle">增加书籍</button>
+  <button v-on:click="remove" v-bind:class="buttonStyle">删除</button>
+   <ul>
+      <li v-for = "todo in todos" v-bind:style="stylelist">
+          <span>{{todo.text}}</span>
+         
+      </li>
+  </ul>
+</div>
+<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+
+ <script>
+ var app = new Vue({
+  el:'#app',
+  data:{
+    todos:[{text:'红楼梦'},{text:'水浒传'}],
+    message:'',
+    stylelist:{
+      height:'30px',
+      lineHeight:'30px',
+      border:'1px solid red',
+      textAlign:'center',
+      background:'pink',
+      color:'red'
+    },
+    buttonStyle:{
+      'buttonstylelist':true
+    }
+  },
+  methods:{
+    remove:function(index){
+      this.todos.splice(index,1)
+    },
+    addTodo:function(){
+      var text = this.message.trim();
+      if(text){
+        this.todos.push({text:text});
+        this.message=" ";
+      }
+    },
+    add:function(){
+      var text = this.message.trim();
+      if(text){
+        this.todos.push({text:text});
+        this.message=" ";
+      }
+    }
+  }
+ })
+ </script>
+</body>
+</html>
