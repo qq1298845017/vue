@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link href="https://cdn.bootcss.com/semantic-ui/2.3.1/semantic.min.css" rel="stylesheet">
+		<style type="text/css">
+			.ui.header:first-child{
+				margin-top: 50px;
+			}
+			
+			.ui.card, .ui.cards>.card{
+				margin-top: 50px;
+				width: 100%;
+			}
+			textarea{
+				width: 100%;
+				}
+			.trash{
+    			cursor: pointer;
+    			float: right;
+}
+	
+		</style>
+	</head>
+	<body>
+		<div id="app" class="ui container">
+			<h4 class="ui horizontal divider header"><i class="hourglass half  icon"></i> Description </h4>
+			<button class="ui blue button"@click="add">添加笔记</button>
+		<note 
+			v-for="(note,index) in notes"
+			:todo="note" :key="index"></note>
+			
+		</div>
+		<script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+			
+			<script src="https://cdn.bootcss.com/lodash.js/4.17.10/lodash.min.js"></script>
+			<script src="https://cdn.bootcss.com/moment.js/2.22.1/moment.js"></script>
+			<script src="https://cdn.bootcss.com/moment.js/2.22.1/locale/zh-cn.js"></script>
+			<script src="js/new_file.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
